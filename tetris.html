@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テトリスゲーム</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .game-container {
+            position: relative;
+        }
+        canvas {
+            border: 2px solid #333;
+            background-color: #111;
+        }
+        .game-info {
+            margin-top: 20px;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            width: 300px;
+        }
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .mobile-controls {
+            display: none;
+            margin-top: 20px;
+            width: 300px;
+        }
+        .mobile-controls button {
+            margin: 5px;
+            width: 60px;
+            height: 60px;
+            font-size: 20px;
+        }
+        .mobile-row {
+            display: flex;
+            justify-content: space-between;
+        }
+        @media (max-width: 768px) {
+            .mobile-controls {
+                display: block;
+            }
+        }
+        .game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+        .menu-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #333;
+            padding: 8px 16px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="menu-button">メニューに戻る</a>
+    <h1>テトリスゲーム</h1>
+    <div class="game-container">
+        <canvas id="gameCanvas" width="300" height="600"></canvas>
+        <div id="gameOver" class="game-over">
+            <h2>ゲームオーバー</h2>
+            <p>スコア: <span id="finalScore">0</span></p>
+            <button id="restartBtn">再開始</button>
+        </div>
+    </div>
+    
+    <div class="game-info">
+        <div>スコア: <span id="score">0</span></div>
+        <div>レベル: <span id="level">1</span></div>
+    </div>
+    
+    <div class="controls">
+        <button id="startBtn">スタート</button>
+        <button id="pauseBtn">一時停止</button>
+    </div>
+    
+    <div class="mobile-controls">
+        <div class="mobile-row">
+            <button id="rotateBtn">回転</button>
+            <button id="downBtn">↓</button>
+        </div>
+        <div class="mobile-row">
+            <button id="leftBtn">←</button>
+            <button id="rightBtn">→</button>
+        </div>
+    </div>
+    
+    <script src="tetris.js"></script>
+</body>
+</html>
